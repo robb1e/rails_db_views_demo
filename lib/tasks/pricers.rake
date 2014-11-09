@@ -6,4 +6,8 @@ namespace :pricer do
   task :joins => :environment do
     Pricers::Join.new.run
   end
+
+  task :views => :environment do
+    Pricers::View.new.run
+  end
 end
