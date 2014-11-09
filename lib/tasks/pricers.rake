@@ -1,13 +1,20 @@
+def timer(&block)
+  started = Time.now
+  block.call
+  finished = Time.now
+  puts "#{finished - started}"
+end
+
 namespace :pricer do
   task :memory => :environment do
-    Pricers::Memory.new.run
+    timer { Pricers::Memory.new.run }
   end
 
   task :joins => :environment do
-    Pricers::Join.new.run
+    timer { Pricers::Join.new.run }
   end
 
   task :views => :environment do
-    Pricers::View.new.run
+    timer { Pricers::View.new.run }
   end
 end
